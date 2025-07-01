@@ -1,9 +1,4 @@
-
----
-title: MapReduce 논문 정리
-tags: [논문, 시스템, 병렬처리]
----
-
+2025.06.30 ~ 2025.07.01
 # MapReduce: Simplified Data Processing on Large Clusters
 
 ### [1-1]  
@@ -550,7 +545,7 @@ reduce 작업이 완료되면, reduce 작업자는 **임시 파일을 최종 출
 ---
 **원문:**  
 
-The vast majority of our map and reduce operators are deterministic, and the fact that our semantics are equivalent to a sequential execution in this case makes it very easy for programmers to reason about their program’s behavior. When the map and/or reduce operators are nondeterministic, we provide weaker but still reasonable semantics. In the presence of nondeterministic operators, the output of a particular reduce task R1 is equivalent to the output for R1 produced by a sequential execution of the nondeterministic program. However, the output for a different reduce task R2 may correspond to the output for R2 produced by a different sequential execution of the nondeterministic program.
+The vast majority of our map and reduce operators are deterministic, and the fact that our semantics are equivalent to a sequential execution in this case makes it very easy for programmers to reason about their program’s behavior. 
 
 ---
 
@@ -559,51 +554,28 @@ The vast majority of our map and reduce operators are deterministic, and the fac
 대부분의 map 및 reduce 함수는 **결정적**이기 때문에,  
 **개발자는 프로그램의 동작 결과를 순차 실행처럼 직관적으로 예측**할 수 있다.
 
+---
+**원문:**  
+
+ When the map and/or reduce operators are nondeterministic, we provide weaker but still reasonable semantics. In the presence of nondeterministic operators, the output of a particular reduce task R1 is equivalent to the output for R1 produced by a sequential execution of the nondeterministic program. However, the output for a different reduce task R2 may correspond to the output for R2 produced by a different sequential execution of the nondeterministic program.
+
+---
+
+**번역:**  
+
 그러나 map 또는 reduce 함수가 **비결정적(nondeterministic)**이라면,  
 결과는 다소 달라질 수 있지만, 여전히 **타당한 수준의 의미론적 일관성**은 유지된다.  
 이 경우 특정 reduce 작업 R1의 출력은 **순차 실행 시의 R1 결과와 동일**하지만,  
 다른 reduce 작업 R2는 **다른 실행에서 생성된 map 출력에 기반한 결과**를 가질 수도 있다.
 
-
 ---
 **원문:**  
-**Semantics in the Presence of Failures**  
-When the user-supplied map and reduce operators are deterministic functions of their input values, our distributed implementation produces the same output as would have been produced by a nonfaulting sequential execution of the entire program.
-
-We rely on atomic commits of map and reduce task outputs to achieve this property. Each in-progress task writes its output to private temporary files. A reduce task produces one such file, and a map task produces R such files (one per reduce task). When a map task completes, the worker sends a message to the master and includes the names of the R temporary files in the message. If the master receives a completion message for an already completed map task, it ignores the message. Otherwise, it records the names of R files in a master data structure.
-
-When a reduce task completes, the reduce worker atomically renames its temporary output file to the final output file. If the same reduce task is executed on multiple machines, multiple rename calls will be executed for the same final output file. We rely on the atomic rename operation provided by the underlying file system to guarantee that the final file system state contains only the data produced by one execution of the reduce task.
-
-The vast majority of our map and reduce operators are deterministic, and the fact that our semantics are equivalent to a sequential execution in this case makes it very easy for programmers to reason about their program’s behavior. When the map and/or reduce operators are nondeterministic, we provide weaker but still reasonable semantics. In the presence of nondeterministic operators, the output of a particular reduce task R1 is equivalent to the output for R1 produced by a sequential execution of the nondeterministic program. However, the output for a different reduce task R2 may correspond to the output for R2 produced by a different sequential execution of the nondeterministic program.
 
 Consider map task M and reduce tasks R1 and R2. Let e(Ri) be the execution of R1 that committed (there is exactly one such execution). The weaker semantics arise because e(R1) may have read the output produced by one execution of M, and e(R2) may have read the output produced by a different execution of M.
 
 ---
 
 **번역:**  
-**장애 상황에서의 의미론(Semantics in the Presence of Failures)**  
-사용자가 작성한 map 및 reduce 연산자가 **입력값에 대해 결정적(deterministic)**인 함수라면,  
-MapReduce의 분산 실행 결과는 **오류 없이 순차적으로 실행했을 때와 동일한 출력**을 보장한다.
-
-이러한 특성을 보장하기 위해, MapReduce는 **map 및 reduce 작업 결과의 원자적 커밋(atomic commit)**을 활용한다.  
-실행 중인 각 작업은 결과를 **개별 임시 파일(private temporary files)**에 기록한다.  
-reduce 작업은 하나의 임시 파일을 생성하고, map 작업은 **reduce 작업 수(R)**만큼의 임시 파일을 생성한다.
-
-map 작업이 완료되면, 해당 작업자는 마스터에게 **임시 파일들의 이름을 포함한 완료 메시지**를 전송한다.  
-만약 마스터가 이미 완료된 map 작업의 메시지를 다시 받으면 **이를 무시**하고,  
-아닌 경우에는 **임시 파일들의 경로를 마스터의 데이터 구조에 저장**한다.
-
-reduce 작업이 완료되면, reduce 작업자는 **임시 파일을 최종 출력 파일로 원자적으로 rename**한다.  
-동일한 reduce 작업이 여러 머신에서 동시에 수행된 경우에도,  
-**파일 시스템의 rename 연산이 원자적이기 때문에** 결국 하나의 실행 결과만이 최종 파일로 남는다.
-
-대부분의 map 및 reduce 함수는 **결정적**이기 때문에,  
-**개발자는 프로그램의 동작 결과를 순차 실행처럼 직관적으로 예측**할 수 있다.
-
-그러나 map 또는 reduce 함수가 **비결정적(nondeterministic)**이라면,  
-결과는 다소 달라질 수 있지만, 여전히 **타당한 수준의 의미론적 일관성**은 유지된다.  
-이 경우 특정 reduce 작업 R1의 출력은 **순차 실행 시의 R1 결과와 동일**하지만,  
-다른 reduce 작업 R2는 **다른 실행에서 생성된 map 출력에 기반한 결과**를 가질 수도 있다.
 
 예를 들어, map 작업 M과 reduce 작업 R1, R2가 있다고 하자.  
 `e(Ri)`는 R1의 최종 커밋된 실행이라 할 때,  
@@ -611,3 +583,350 @@ reduce 작업이 완료되면, reduce 작업자는 **임시 파일을 최종 출
 `e(R2)`는 M의 **다른 실행 결과**를 읽었을 수 있으므로,  
 **완전한 일관성은 없지만 합리적인 수준의 결과를 보장한다.**
 
+---
+**원문:**  
+Network bandwidth is a relatively scarce resource in our computing environment.  
+We conserve network bandwidth by taking advantage of the fact that the input data (managed by GFS [10]) is stored on the local disks of the machines that make up our cluster.
+
+---
+
+**번역:**  
+우리의 컴퓨팅 환경에서는 **네트워크 대역폭이 상대적으로 제한적인 자원**이다.  
+MapReduce는 **입력 데이터(GFS가 관리함)**가 클러스터를 구성하는 **각 머신의 로컬 디스크에 저장되어 있다는 점을 활용하여**, 네트워크 대역폭 사용을 절약한다.
+
+---
+
+**원문:**  
+GFS divides each file into 64MB blocks and stores several copies of each block (typically 3 copies) on different machines.  
+The MapReduce master takes the location information of the input files into account and attempts to schedule a map task on a machine that contains a replica of the corresponding input data.
+
+---
+
+**번역:**  
+GFS는 각 파일을 **64MB 블록 단위로 분할하고**, 각 블록을 **서로 다른 머신에 보통 3개의 복제본**으로 저장한다.  
+MapReduce의 마스터는 **입력 파일의 위치 정보를 고려하여**, 해당 입력 데이터를 포함하고 있는 **복제본 머신에 map 작업을 우선 할당**하려 한다.
+
+---
+
+**원문:**  
+Failing that, it attempts to schedule a map task near a replica of that task’s input data (e.g., on a worker machine that is on the same network switch as the machine containing the data).
+
+---
+
+**번역:**  
+해당 머신에서 실행할 수 없는 경우에는, **그 데이터 복제본과 가까운 위치의 작업자 머신**에 map 작업을 할당하려 시도한다.  
+예를 들어, **데이터를 가진 머신과 동일한 네트워크 스위치에 연결된 작업자 머신**이 이에 해당한다.
+
+---
+
+**원문:**  
+When running large MapReduce operations on a significant fraction of the workers in a cluster, most input data is read locally and consumes no network bandwidth.
+
+---
+
+**번역:**  
+클러스터 내 많은 작업자들이 참여하는 **대규모 MapReduce 작업**이 실행될 때,  
+대부분의 입력 데이터는 **로컬 디스크에서 직접 읽히므로 네트워크 대역폭을 전혀 사용하지 않는다.**
+
+---
+
+**원문:**  
+We subdivide the map phase into M pieces and the reduce phase into  
+R pieces as described previously. Ideally, M and R should be much  
+larger than the number of worker machines. Having each worker perform  
+many different tasks improves dynamic load balancing and also  
+speeds up recovery when a worker fails: the many map tasks it has  
+completed can be spread out across all the other worker machines.
+
+---
+
+**번역:**  
+우리는 map 단계는 **M개의 조각**, reduce 단계는 **R개의 조각**으로 나누어 처리합니다(앞서 설명한 대로).  
+**이론적으로는 M과 R이 worker 머신 수보다 훨씬 많은 것이 이상적**입니다.  
+이렇게 하면 각 worker가 다양한 작업을 수행하게 되어 **동적 부하 분산(load balancing)**이 개선되고,  
+**작업자 장애 발생 시에도 빠른 복구가 가능합니다.**  
+즉, 실패한 worker가 수행하던 다수의 map 작업들을 **다른 머신에 고르게 분산시킬 수 있기 때문입니다.**
+
+---
+
+**원문:**  
+There are practical bounds on how large M and R can be in our implementation  
+since the master must make O(M+R) scheduling decisions  
+and keep O(M×R) state in memory as described. (The constant factors  
+for memory usage are small, however. The O(M×R) piece of the state  
+consists of approximately one byte of data per map task/ reduce task pair.)
+
+---
+
+**번역:**  
+하지만 현실적으로는 M과 R을 너무 크게 잡을 수는 없습니다.  
+왜냐하면 **마스터가 M + R개의 작업을 스케줄링해야 하고**,  
+또한 **M × R 크기의 상태 정보를 메모리에 유지**해야 하기 때문입니다.  
+(다만, 메모리 사용량의 상수 계수는 작습니다.  
+M × R 크기의 상태 정보는 map 작업과 reduce 작업 쌍마다 약 1바이트 정도의 정보만 필요합니다.)
+
+---
+
+**원문:**  
+Furthermore, R is often constrained by users because the output of  
+each reduce task ends up in a separate output file. In practice, we tend  
+to choose M so that each individual task is roughly 16MB to 64MB of  
+input data (so that the locality optimization described previously is most  
+effective), and we make R a small multiple of the number of worker  
+machines we expect to use. We often perform MapReduce computations  
+with M = 200,000 and R = 5,000, using 2,000 worker machines.
+
+---
+
+**번역:**  
+또한, R 값은 사용자에 의해 제한되는 경우가 많습니다.  
+왜냐하면 **각 reduce 작업의 출력은 별도의 출력 파일로 저장되기 때문입니다.**  
+실제로 우리는 각 map 작업이 **16MB에서 64MB 정도의 입력 데이터**를 처리하도록 M을 설정합니다.  
+이렇게 하면 앞서 설명한 **데이터 지역성(locality)** 최적화 효과를 최대화할 수 있습니다.  
+그리고 R 값은 일반적으로 예상하는 worker 머신 수의 **작은 배수**로 설정합니다.  
+실제로 우리는 종종 **worker 2,000대에 M = 200,000, R = 5,000**으로 MapReduce 작업을 수행합니다.
+
+---
+**원문:**  
+One of the common causes that lengthens the total time taken for a MapReduce operation is a straggler,  
+that is, a machine that takes an unusually long time to complete one of the last few map or reduce tasks in the computation.
+
+**번역:**  
+MapReduce 작업에서 **전체 처리 시간을 불필요하게 길게 만드는 대표적인 원인 중 하나는 '스트래글러(straggler)'**입니다.  
+이는 전체 작업 중 **마지막 몇 개 map 또는 reduce 작업이 특정 머신에서 비정상적으로 오래 걸리는 현상**을 말합니다.
+
+---
+
+**원문:**  
+Stragglers can arise for a whole host of reasons.  
+For example, a machine with a bad disk may experience frequent correctable errors  
+that slow its read performance from 30MB/s to 1MB/s.
+
+**번역:**  
+스트래글러는 **여러 가지 다양한 원인**으로 발생할 수 있습니다.  
+예를 들어, **디스크 상태가 좋지 않은 머신**은 자주 발생하는 오류 수정 작업 때문에  
+**읽기 속도가 30MB/s에서 1MB/s로 급격히 느려질 수 있습니다.**
+
+---
+
+**원문:**  
+The cluster scheduling system may have scheduled other tasks on the machine,  
+causing it to execute the MapReduce code more slowly  
+due to competition for CPU, memory, local disk, or network bandwidth.
+
+**번역:**  
+또는 클러스터 스케줄러가 해당 머신에 **다른 작업을 함께 배정**했을 수도 있습니다.  
+이로 인해 CPU, 메모리, 디스크, 네트워크 대역폭 등을 두고 **자원 경합이 발생**하고,  
+그 결과 MapReduce 작업의 **처리 속도가 느려질 수 있습니다.**
+
+---
+
+**원문:**  
+A recent problem we experienced was a bug in machine initialization code  
+that caused processor caches to be disabled:  
+computations on affected machines slowed down by over a factor of one hundred.
+
+**번역:**  
+실제로 우리가 겪었던 문제 중 하나는, **머신 초기화 코드에 버그가 있어서 CPU 캐시가 비활성화**된 경우였습니다.  
+이로 인해 해당 머신들의 연산 속도는 **무려 100배 이상 느려졌습니다.**
+
+---
+
+**원문:**  
+We have a general mechanism to alleviate the problem of stragglers.
+
+**번역:**  
+이러한 스트래글러 문제를 해결하기 위해 우리는 **일반적인 해결 메커니즘**을 마련했습니다.
+
+---
+
+**원문:**  
+When a MapReduce operation is close to completion,  
+the master schedules backup executions of the remaining in-progress tasks.
+
+**번역:**  
+MapReduce 작업이 거의 완료될 시점이 되면,  
+**마스터는 아직 끝나지 않은 작업들에 대해 '백업 실행(backup execution)'을 추가로 시작**합니다.
+
+---
+
+**원문:**  
+The task is marked as completed whenever either the primary or the backup execution completes.
+
+**번역:**  
+이때 **기존 작업(primary)**이든 **백업 작업**이든  
+**둘 중 하나만 완료되면 해당 작업은 전체적으로 '완료됨'으로 처리**됩니다.
+
+---
+
+**원문:**  
+We have tuned this mechanism so that it typically increases  
+the computational resources used by the operation by no more than a few percent.
+
+**번역:**  
+이 메커니즘은 전체 작업에서 사용하는 **컴퓨팅 자원을 몇 퍼센트 이내로만 추가 사용**하도록  
+효율적으로 조정되어 있습니다.
+
+---
+
+**원문:**  
+We have found that this significantly reduces the time to complete large MapReduce operations.  
+As an example, the sort program described in Section 5.3  
+takes 44% longer to complete when the backup task mechanism is disabled.
+
+**번역:**  
+실제로 이 방식은 **대규모 MapReduce 작업의 총 완료 시간을 눈에 띄게 줄이는 데 효과적**이었습니다.  
+예를 들어, 5.3절에서 설명된 정렬(sort) 프로그램은  
+**백업 작업 기능이 꺼져 있을 때 실행 시간이 무려 44% 더 오래 걸렸습니다.**
+
+---
+**원문:**  
+**4. Refinements**  
+Although the basic functionality provided by simply writing map and reduce functions is sufficient for most needs, we have found a few extensions useful. These include:
+
+**번역:**  
+**4. 기능 개선 사항 (Refinements)**  
+Map 함수와 Reduce 함수만 작성하는 **기본 기능만으로도 대부분의 요구는 충족**되지만,  
+실제 운영 과정에서 **유용하다고 판단된 몇 가지 확장 기능**이 있었습니다. 그 내용은 다음과 같습니다:
+
+---
+
+**원문:**  
+• user-specified partitioning functions for determining the mapping of intermediate key values to the R reduce shards;
+
+**번역:**  
+• 중간 key 값을 R개의 리듀스 작업(R개의 shard)에 **어떻게 나눌지 사용자가 직접 정의하는 partitioning 함수**
+
+---
+
+**원문:**  
+• ordering guarantees: Our implementation guarantees that within each of the R reduce partitions, the intermediate key/value pairs are processed in increasing key order;
+
+**번역:**  
+• 정렬 순서 보장: **각 리듀스 파티션 내에서 중간 key/value 쌍은 key 기준으로 오름차순으로 처리**된다는 보장
+
+---
+
+**원문:**  
+• user-specified combiner functions for doing partial combination of generated intermediate values with the same key within the same map task (to reduce the amount of intermediate data that must be transferred across the network);
+
+**번역:**  
+• 동일한 키에 대한 중간 값들을 **하나의 map 작업 내에서 미리 결합(combine)하는 사용자 정의 Combiner 함수**  
+→ 이렇게 하면 **네트워크를 통해 전달해야 할 중간 데이터 양을 줄일 수 있음**
+
+---
+
+**원문:**  
+• custom input and output types, for reading new input formats and producing new output formats;
+
+**번역:**  
+• 새로운 입력 형식과 출력 형식을 지원하기 위한 **사용자 정의 입출력 타입**
+
+---
+
+**원문:**  
+• a mode for execution on a single machine for simplifying debugging and small-scale testing.
+
+**번역:**  
+• **단일 머신에서 실행하는 모드**를 제공해, **디버깅 및 소규모 테스트를 쉽게 할 수 있음**
+
+---
+
+**원문:**  
+**5. Performance**  
+In this section, we measure the performance of MapReduce on two computations running on a large cluster of machines.
+
+**번역:**  
+**5. 성능 평가**  
+이번 절에서는 **대규모 클러스터 환경에서 두 가지 작업에 대해 MapReduce의 성능을 측정**합니다.
+
+---
+
+**원문:**  
+One computation searches through approximately one terabyte of data looking for a particular pattern.
+
+**번역:**  
+첫 번째 작업은 **약 1테라바이트의 데이터에서 특정 패턴을 탐색**하는 작업입니다.
+
+---
+
+**원문:**  
+The other computation sorts approximately one terabyte of data.
+
+**번역:**  
+두 번째 작업은 **약 1테라바이트의 데이터를 정렬**하는 작업입니다.
+
+---
+
+**원문:**  
+These two programs are representative of a large subset of the real programs written by users of MapReduce—
+
+**번역:**  
+이 두 프로그램은 **MapReduce 사용자들이 실제로 작성하는 많은 프로그램 유형을 대표**합니다.
+
+---
+
+**원문:**  
+one class of programs shuffles data from one representation to another,  
+and another class extracts a small amount of interesting data from a large dataset.
+
+**번역:**  
+즉, **한 부류는 데이터를 한 형태에서 다른 형태로 변환(shuffle)**하는 작업이고,  
+**또 다른 부류는 방대한 데이터셋에서 중요한 정보만 추출**하는 작업입니다.
+
+---
+**원문:**  
+**5.1 Cluster Configuration**  
+All of the programs were executed on a cluster that consisted of approximately 1800 machines.
+
+**번역:**  
+**5.1 클러스터 구성**  
+모든 프로그램은 **약 1800대의 머신으로 구성된 클러스터**에서 실행되었습니다.
+
+---
+
+**원문:**  
+Each machine had two 2GHz Intel Xeon processors with Hyper-Threading enabled,  
+4GB of memory, two 160GB IDE disks, and a gigabit Ethernet link.
+
+**번역:**  
+각 머신은 **하이퍼스레딩이 활성화된 2GHz 인텔 제온 프로세서 2개**,  
+**4GB 메모리**, **160GB IDE 디스크 2개**,  
+그리고 **1Gbps 이더넷 링크**를 갖추고 있었습니다.
+
+---
+
+**원문:**  
+The machines were arranged in a two-level tree-shaped switched network  
+with approximately 100-200Gbps of aggregate bandwidth available at the root.
+
+**번역:**  
+머신들은 **2단계 트리 구조의 스위칭 네트워크**로 구성되어 있었으며,  
+네트워크 최상단(root)에는 **총 100~200Gbps의 대역폭**이 제공되었습니다.
+
+---
+
+**원문:**  
+All of the machines were in the same hosting facility  
+and therefore the roundtrip time between any pair of machines was less than a millisecond.
+
+**번역:**  
+모든 머신은 **동일한 데이터센터(호스팅 시설)**에 있었기 때문에,  
+**어느 두 머신 간의 왕복 시간(RTT)은 1밀리초 미만**이었습니다.
+
+---
+
+**원문:**  
+Out of the 4GB of memory, approximately 1-1.5GB was reserved by other tasks running on the cluster.
+
+**번역:**  
+총 4GB 메모리 중 약 **1~1.5GB는 클러스터에서 동작 중인 다른 작업들이 점유**하고 있었습니다.
+
+---
+
+**원문:**  
+The programs were executed on a weekend afternoon  
+when the CPUs, disks, and network were mostly idle.
+
+**번역:**  
+이 프로그램들은 **CPU, 디스크, 네트워크가 대부분 유휴 상태였던 주말 오후**에 실행되었습니다.
