@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "일지/2025.07.01.md",
+                "file": "일지/2025.07.07.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025.07.01"
+              "title": "2025.07.07"
             }
           }
         ]
@@ -170,25 +170,28 @@
   },
   "active": "c3cb14411de3c8d3",
   "lastOpenFiles": [
-    "논문 리딩/MapReduce.md",
-    "영어공부/day12.md",
+    "일지/2025.07.06.md",
+    "일지/2025.07.07.md",
+    "일지/2025.07.05.md",
     "일지/2025.07.01.md",
     "일지/2025.06.30.md",
-    "일지/2025.07.05.md",
-    "Pasted image 20250701131059.png",
-    "영어공부/day10.md",
-    "영어공부/Untitled",
-    "영어공부/day11.md",
-    "Pasted image 20250630145122.png",
     "일지/2025.06.29.md",
-    "영어공부/day9.md",
-    "논문 리딩",
-    "Untitled.md",
     "일지/2025.06.28.md",
     "일지/2025.06.27.md",
     "일지/2025.06.26.md",
     "일지/2025.06.25.md",
-    "영어공부",
+    "Pasted image 20250630145122.png",
+    "Pasted image 20250701131059.png",
+    "영어 공부/day16.md",
+    "논문 리딩/MapReduce.md",
+    "영어 공부/day12.md",
+    "영어 공부/day10.md",
+    "영어공부/Untitled",
+    "영어 공부/day11.md",
+    "영어 공부/day9.md",
+    "논문 리딩",
+    "Untitled.md",
+    "영어 공부",
     "Welcome.md",
     "일지"
   ]

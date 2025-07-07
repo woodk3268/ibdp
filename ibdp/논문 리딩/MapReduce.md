@@ -930,3 +930,506 @@ when the CPUs, disks, and network were mostly idle.
 
 **번역:**  
 이 프로그램들은 **CPU, 디스크, 네트워크가 대부분 유휴 상태였던 주말 오후**에 실행되었습니다.
+
+---
+다음은 요청하신 **5.1 Cluster Configuration** 절의 번역입니다. 의미 단위로 나누어 정리했습니다.
+
+---
+
+**원문:**  
+**5.1 Cluster Configuration**  
+All of the programs were executed on a cluster that consisted of approximately  
+1800 machines.
+
+**번역:**  
+**5.1 클러스터 구성**  
+모든 프로그램은 **약 1800대의 머신으로 구성된 클러스터에서 실행**되었습니다.
+
+---
+
+**원문:**  
+Each machine had two 2GHz Intel Xeon  
+processors with Hyper-Threading enabled, 4GB of memory, two  
+160GB IDE disks, and a gigabit Ethernet link.
+
+**번역:**  
+각 머신은 **하이퍼스레딩이 활성화된 2GHz 인텔 제온 프로세서 2개**,  
+**4GB 메모리**, **160GB IDE 디스크 2개**,  
+그리고 **1Gbps 이더넷 링크**를 갖추고 있었습니다.
+
+---
+
+**원문:**  
+The machines were arranged in a two-level tree-shaped switched network with approximately  
+100-200Gbps of aggregate bandwidth available at the root.
+
+**번역:**  
+머신들은 **2단계 트리 구조의 스위칭 네트워크**로 구성되어 있었으며,  
+네트워크 최상단(root)에는 **총 100~200Gbps의 대역폭**이 제공되었습니다.
+
+---
+
+**원문:**  
+All of the machines were in the same hosting facility and therefore the roundtrip  
+time between any pair of machines was less than a millisecond.
+
+**번역:**  
+모든 머신은 **동일한 데이터센터(호스팅 시설)**에 있었기 때문에,  
+**어느 두 머신 간의 왕복 시간(RTT)은 1밀리초 미만**이었습니다.
+
+---
+
+**원문:**  
+Out of the 4GB of memory, approximately 1-1.5GB was reserved by  
+other tasks running on the cluster.
+
+**번역:**  
+총 4GB 메모리 중 약 **1~1.5GB는 클러스터에서 동작 중인 다른 작업들이 점유**하고 있었습니다.
+
+---
+
+**원문:**  
+The programs were executed on a weekend afternoon when the CPUs, disks, and network were mostly idle.
+
+**번역:**  
+이 프로그램들은 **CPU, 디스크, 네트워크가 대부분 유휴 상태였던 주말 오후**에 실행되었습니다.
+
+---
+
+**원문:**  
+**5.2 Grep**  
+The grep program scans through 10¹⁰ 100-byte records, searching for a relatively  
+rare three-character pattern (the pattern occurs in 92,337 records).
+
+**번역:**  
+**5.2 Grep**  
+이 Grep 프로그램은 **100바이트 크기의 레코드 100억 개를 스캔하면서**,  
+**비교적 드물게 등장하는 3문자 패턴**을 찾습니다.  
+(이 패턴은 **총 92,337개 레코드에서 발견**되었습니다.)
+
+---
+
+**원문:**  
+The input is split into approximately 64MB pieces (M = 15000), and the  
+entire output is placed in one file (R = 1).
+
+**번역:**  
+입력 데이터는 **약 64MB 단위로 분할(M = 15,000)**되었으며,  
+**출력 결과 전체는 하나의 파일(R = 1)**에 저장됩니다.
+
+---
+
+**원문:**  
+Figure 2 shows the progress of the computation over time. 
+The Y-axis shows the rate at which the input data is scanned.  
+The rate gradually picks up as more machines are assigned to this MapReduce computation  
+and peaks at over 30 GB/s when 1764 workers have been assigned.
+
+**번역:**  
+**그림 2는 시간에 따른 연산 진행 상황**을 보여줍니다.  
+Y축은 **입력 데이터를 얼마나 빠르게 스캔했는지의 속도(GB/s)**를 나타냅니다.  
+이 속도는 MapReduce 작업에 **더 많은 머신들이 할당되면서 점차 증가**하고,  
+**총 1764개의 워커가 투입되었을 때 초당 30GB를 넘는 속도**로 정점을 찍습니다.
+
+---
+
+**원문:**  
+As the map tasks finish, the rate starts dropping and hits zero  
+about 80 seconds into the computation.
+
+**번역:**  
+**Map 작업들이 완료되면서**, 데이터 스캔 속도는 점차 감소하고,  
+**연산 시작 후 약 80초 시점에 0에 도달**합니다.
+
+---
+
+**원문:**  
+The entire computation takes approximately 150 seconds from start to finish.  
+This includes about a minute of startup overhead.
+
+**번역:**  
+전체 연산은 **시작부터 종료까지 약 150초가 소요**됩니다.  
+여기에는 **약 1분가량의 시작 오버헤드 시간**도 포함됩니다.
+
+---
+
+**원문:**  
+The overhead is due to the propagation of the program to all worker machines  
+and delays interacting with GFS to open the set of 1000 input files  
+and to get the information needed for the locality optimization.
+
+**번역:**  
+이 **시작 오버헤드는 프로그램을 모든 워커 머신으로 전파하는 데 소요된 시간**과,  
+**GFS(Google File System)와의 상호작용**,  
+즉 **1000개의 입력 파일을 여는 작업**과  
+**데이터 지역성 최적화를 위한 메타데이터를 얻는 데 걸린 지연**으로 인해 발생한 것입니다.
+
+---
+**원문:**  
+The sort program sorts 10¹⁰ 100-byte records (approximately 1 terabyte of data).  
+This program is modeled after the TeraSort benchmark [12].
+
+**번역:**  
+이 Sort 프로그램은 **100바이트 크기의 레코드 100억 개(약 1테라바이트)**를 정렬합니다.  
+이 프로그램은 **TeraSort 벤치마크**를 기반으로 작성되었습니다【12】.
+
+---
+
+**원문:**  
+The sorting program consists of less than 50 lines of user code.  
+The final sorted output is written to a set of 2-way replicated GFS files  
+(i.e., 2 terabytes are written as the output of the program).
+
+**번역:**  
+이 정렬 프로그램은 **사용자 코드 50줄도 되지 않는 간단한 코드**로 구성되어 있으며,  
+정렬된 최종 결과는 **2중 복제된 GFS 파일 세트**에 저장됩니다.  
+즉, **총 2테라바이트 분량이 출력 파일로 기록**됩니다.
+
+---
+
+**원문:**  
+As before, the input data is split into 64MB pieces (M = 15000).  
+We partition the sorted output into 4000 files (R = 4000).  
+The partitioning function uses the initial bytes of the key to segregate it into one of pieces.
+
+**번역:**  
+이전과 마찬가지로, 입력 데이터는 **64MB 단위(M = 15,000)**로 분할되고,  
+정렬된 출력은 **총 4,000개의 파일(R = 4,000)**로 나뉘어 저장됩니다.  
+파티셔닝 함수는 **키의 앞부분 바이트를 기준으로 데이터를 특정 파티션에 할당**합니다.
+
+---
+
+**원문:**  
+Our partitioning function for this benchmark has built-in knowledge of the distribution of keys.  
+In a general sorting program, we would add a prepass MapReduce operation that would  
+collect a sample of the keys and use the distribution of the sampled keys to compute  
+splitpoints for the final sorting pass.
+
+**번역:**  
+이 벤치마크에서 사용한 파티셔닝 함수는 **키 분포에 대한 사전 지식**을 내장하고 있습니다.  
+일반적인 정렬 프로그램에서는, **사전 MapReduce 작업(prepass)**을 추가하여  
+**키 샘플을 수집**하고, **그 샘플 분포를 바탕으로 최종 정렬 시 사용할 분할 지점(split point)**을 계산하게 됩니다.
+
+---
+
+**원문:**  
+Figure 3 shows the progress of a normal execution of the sort program.  
+The top-left graph shows the rate at which input is read.  
+The rate peaks at about 13GB/s and dies off fairly quickly  
+since all map tasks finish before 200 seconds have elapsed.
+
+**번역:**  
+**그림 3은 Sort 프로그램의 일반적인 실행 과정**을 보여줍니다.  
+좌측 상단 그래프는 **입력 데이터가 읽히는 속도**를 나타냅니다.  
+처리 속도는 **초당 약 13GB까지 상승**한 후,  
+**200초 이내에 모든 map 작업이 완료되면서 빠르게 감소**합니다.
+
+----
+**원문:**  
+Note that the input rate is less than for grep. This is because the sort map tasks spend about half their time and I/O bandwidth writing intermediate output to their local disks.  
+The corresponding intermediate output for grep had negligible size.
+
+**번역:**  
+(Grep보다 입력 속도가 낮은 이유는)  
+**Sort 작업의 map 태스크들이 전체 시간과 I/O 대역폭의 절반가량을  
+중간 결과를 로컬 디스크에 기록하는 데 사용**하기 때문입니다.  
+반면에 **Grep 작업의 중간 결과는 거의 없을 정도로 작았기** 때문에  
+이런 부담이 없었습니다.
+
+---
+
+**원문:**  
+A few things to note: the input rate is higher than the shuffle rate  
+and the output rate because of our locality optimization;  
+most data is read from a local disk and bypasses our relatively bandwidth constrained network.
+
+**번역:**  
+참고할 점은 다음과 같습니다:  
+**입력 속도가 셔플 단계나 출력 단계보다 더 높은 이유는,  
+로컬 처리(locality optimization)를 통해 대부분의 데이터를 로컬 디스크에서 읽기 때문**입니다.  
+즉, **대부분의 I/O가 네트워크를 거치지 않고 로컬에서 해결되었기** 때문에  
+네트워크 병목을 피할 수 있었습니다.
+
+---
+
+**원문:**  
+The shuffle rate is higher than the output rate  
+because the output phase writes two copies of the sorted data  
+(we make two replicas of the output for reliability and availability reasons).
+
+**번역:**  
+**셔플 단계의 속도가 출력 단계보다 높은 이유는,**  
+출력 단계에서 **정렬된 데이터를 2중 복제하여 저장하기 때문**입니다.  
+(이는 **데이터의 신뢰성과 가용성을 보장하기 위한 복제 전략**입니다.)
+
+---
+
+**원문:**  
+We write two replicas because that is the mechanism for reliability and  
+availability provided by our underlying file system.  
+Network bandwidth requirements for writing data would be reduced  
+if the underlying file system used erasure coding [15] rather than replication.
+
+**번역:**  
+**이중 복제를 사용하는 이유는,**  
+우리 시스템이 사용하는 파일 시스템(GFS)이 **신뢰성과 가용성을 보장하는 방식이 바로 복제이기 때문**입니다.  
+만약 복제 대신 **소거 코드(erasure coding)**를 사용했다면,  
+**데이터 쓰기에 필요한 네트워크 대역폭을 줄일 수 있었을 것**입니다【15】.
+
+---
+
+**원문:**  
+The original article has further experiments that examine the  
+effects of backup tasks and machine failures [8].
+
+**번역:**  
+이와 관련된 **백업 태스크와 머신 장애에 대한 실험 결과**는  
+**원 논문【8】에서 더 자세히 다루고 있습니다.**
+
+---
+**원문:**  
+**6 Experience**  
+We wrote the first version of the MapReduce library in February of 2003 and made significant enhancements to it in August of 2003,  
+including the locality optimization, dynamic load balancing of task execution across worker machines, etc.  
+Since that time, we have been pleasantly surprised at how broadly applicable the MapReduce library has been for the kinds of problems we work on.  
+It has been used across a wide range of domains within Google, including:
+
+
+**번역:**  
+**6 경험**  
+MapReduce 라이브러리의 첫 번째 버전은 **2003년 2월에 작성**되었고,  
+**2003년 8월에는 지역성(locality) 최적화, 작업 실행의 동적 로드 밸런싱 등 주요 기능이 추가**되었습니다.  
+그 이후로, 우리가 다루는 문제 유형에 대해 **MapReduce가 예상보다 훨씬 다양한 영역에서 유용하게 사용될 수 있음에 놀랐습니다**.  
+Google 내부에서 MapReduce는 다음과 같은 다양한 분야에 활용되었습니다:
+
+---
+
+**원문:**  
+• large-scale machine learning problems,  
+• clustering problems for the Google News and Froogle products,  
+• extracting data to produce reports of popular queries (e.g. Google Zeitgeist and Google Trends),  
+• extracting properties of Web pages for new experiments and products (e.g. extraction of geographical locations from a large corpus of Web pages for localized search),  
+• processing of satellite imagery data,  
+• language model processing for statistical machine translation, and  
+• large-scale graph computations.
+
+**번역:**  
+• **대규모 머신러닝 문제**,  
+• **Google News 및 Froogle 제품을 위한 클러스터링 문제**,  
+• **인기 검색어 리포트 생성을 위한 데이터 추출** (예: Google Zeitgeist, Google Trends),  
+• **웹 페이지에서 특성 정보를 추출하여 새로운 실험 및 제품에 활용** (예: 지역 검색을 위한 대규모 웹 페이지 코퍼스에서 지리적 위치 추출),  
+• **위성 이미지 데이터 처리**,  
+• **통계적 기계번역을 위한 언어 모델 처리**,  
+• **대규모 그래프 연산**.
+
+---
+
+**원문:**  
+Fig. 4. MapReduce instances over time.  
+Figure 4 shows the significant growth in the number of separate MapReduce programs checked into our primary source-code management system over time,  
+from 0 in early 2003 to almost 900 in September 2004, to about 4000 in March 2006.  
+MapReduce has been so successful because it makes it possible to write a simple program and run it efficiently on a thousand machines in a half hour,  
+greatly speeding up the development and prototyping cycle.  
+Furthermore, it allows programmers who have no experience with distributed and/or parallel systems to exploit large amounts of resources easily.
+
+**번역:**  
+**그림 4. 시간에 따른 MapReduce 인스턴스 수의 증가**  
+그림 4는 **MapReduce 프로그램이 Google의 소스 코드 관리 시스템에 체크인된 수가 시간에 따라 크게 증가한 것**을 보여줍니다.  
+2003년 초에는 0개였지만, **2004년 9월에는 약 900개**, **2006년 3월에는 약 4000개**에 달했습니다.  
+MapReduce가 이처럼 성공한 이유는, **단순한 프로그램을 작성해서 수천 대의 머신에서 30분 만에 효율적으로 실행할 수 있게 해주기 때문**입니다.  
+또한, **분산 및 병렬 시스템에 대한 경험이 없는 프로그래머도 손쉽게 대규모 자원을 활용할 수 있도록 도와줍니다**.
+
+---
+
+**원문:**  
+Table I. MapReduce Statistics for Different Months.  
+At the end of each job, the MapReduce library logs statistics about the computational resources used by the job.  
+In Table I, we show some statistics for a subset of MapReduce jobs run at Google in various months,  
+highlighting the extent to which MapReduce has grown and become the de facto choice for nearly all data processing needs at Google.
+
+**번역:**  
+**표 I. 월별 MapReduce 실행 통계**  
+각 작업이 끝나면, **MapReduce 라이브러리는 해당 작업이 사용한 컴퓨팅 자원에 대한 통계 정보를 기록**합니다.  
+**표 I은 Google에서 여러 시점에 실행된 일부 MapReduce 작업들의 통계를 보여주며**,  
+MapReduce가 **얼마나 빠르게 성장했는지**, 그리고 **사실상 거의 모든 데이터 처리 작업의 표준 도구가 되었는지**를 잘 나타냅니다.
+
+|구분|2004년 8월|2006년 3월|2007년 9월|
+|---|---|---|---|
+|작업 수 (천 단위)|29|171|2,217|
+|평균 완료 시간 (초)|634|874|395|
+|사용된 머신 연 수|217|2,002|11,081|
+|map 입력 데이터 (TB)|3,288|52,254|403,152|
+|map 출력 데이터 (TB)|758|6,743|34,774|
+|reduce 출력 데이터 (TB)|193|2,970|14,018|
+|작업당 평균 사용 머신 수|157|268|394|
+|고유 map 함수 수|395|1958|4083|
+|고유 reduce 함수 수|269|1208|2418|
+
+---
+
+**원문:**  
+**6.1 Large-Scale Indexing**  
+One of our most significant uses of MapReduce to date has been a complete rewrite of the production indexing system that produces the data structures used for the Google Web search service.  
+The indexing system takes as input a large set of documents that have been retrieved by our crawling system, stored as a set of GFS files.  
+
+
+**번역:**  
+**6.1 대규모 색인 구축**  
+지금까지 MapReduce를 사용한 가장 중요한 사례 중 하나는, **Google 웹 검색 서비스에 사용되는 데이터 구조를 생성하는 색인 시스템을 전면적으로 재작성한 것**입니다.  
+이 색인 시스템은 **크롤링 시스템이 수집하여 GFS 파일로 저장한 방대한 문서 집합을 입력으로 사용**합니다. 
+
+---
+
+**원문:**  
+The raw contents for these documents are more than 20 terabytes of data.  
+At the time we converted the indexing system to use MapReduce in 2003, it ran as a sequence of eight MapReduce operations.  
+Since that time, because of the ease with which new phases can be added, many new phases have been added to the indexing system.  
+Using MapReduce (instead of the ad-hoc distributed passes in the prior version of the indexing system) has provided several benefits.
+
+**번역:**  
+해당 문서들의 **원시 데이터 크기는 20TB 이상**입니다.  
+**2003년에 이 색인 시스템을 MapReduce 기반으로 전환**했을 당시, **총 8단계의 MapReduce 작업**으로 구성되어 있었습니다.  
+이후, **새로운 단계 추가가 매우 쉬워졌기 때문에, 다수의 단계가 이후에도 계속 추가**되었습니다.  
+기존의 임시 방편적인 분산 처리 방식 대신 **MapReduce를 도입한 결과 다음과 같은 이점들이 있었습니다.**
+
+
+---
+
+**원문:**  
+• The indexing code is simpler, smaller, and easier to understand because the code that deals with fault tolerance, distribution, and parallelization is hidden within the MapReduce library.  
+For example, the size of one phase of the computation dropped from approximately 3800 lines of C++ code to approximately 700 lines when expressed using MapReduce.
+
+**번역:**  
+• **MapReduce 라이브러리가 장애 처리, 데이터 분산, 병렬화와 같은 복잡한 로직을 내부적으로 처리해주기 때문에**,  
+**색인 코드가 더 간단하고 짧으며 이해하기 쉬워졌습니다**.  
+예를 들어, **기존에는 한 단계의 연산을 위해 약 3,800줄의 C++ 코드가 필요했지만**,  
+**MapReduce로 작성하자 약 700줄로 줄어들었습니다**.
+
+---
+
+**원문:**  
+• The performance of the MapReduce library is good enough that we can keep conceptually unrelated computations separate instead of mixing them together to avoid extra passes over the data.  
+This makes it easy to change the indexing process.  
+For example, one change that took a few months to make in our old indexing system took only a few days to implement in the new system.
+
+**번역:**  
+• **MapReduce의 성능이 충분히 우수하기 때문에**,  
+**데이터를 여러 번 읽는 것을 피하려고 서로 관련 없는 연산들을 억지로 하나로 합칠 필요 없이, 각 연산을 분리된 상태로 유지**할 수 있습니다.  
+이 덕분에 **색인 처리 절차를 변경하는 것도 훨씬 쉬워졌습니다**.  
+예를 들어, **기존 시스템에서는 몇 달이 걸렸던 변경 사항이, 새로운 MapReduce 기반 시스템에서는 며칠 만에 구현**되었습니다.
+
+---
+
+**원문:**  
+The indexing process has become much easier to operate because most of the problems caused by machine failures, slow machines, and networking hiccups are dealt with automatically by the MapReduce library without operator intervention.  
+Furthermore, it is easy to improve the performance of the indexing process by adding new machines to the indexing cluster.
+
+**번역:**  
+**색인 처리 절차의 운영이 훨씬 수월해진 이유는**,  
+**머신 장애, 느린 머신, 네트워크 문제 등 대부분의 문제들이 MapReduce 라이브러리에서 자동으로 처리되기 때문**입니다.  
+또한, **색인 클러스터에 머신을 추가하는 것만으로도 성능을 쉽게 향상시킬 수 있습니다**.
+
+---
+**원문:**  
+**7 Related Work**  
+Many systems have provided restricted programming models and used the restrictions to parallelize the computation automatically.  
+For example, an associative function can be computed over all prefixes of an N element array in log N time on N processors using parallel prefix computations [6, 11, 14].  
+MapReduce can be considered a simplification and distillation of some of these models based on our experience with large real-world computations.  
+More significantly, we provide a fault-tolerant implementation that scales to thousands of processors.  
+In contrast, most of the parallel processing systems have only been implemented on smaller scales and leave the details of handling machine failures to the programmer.
+
+**번역:**  
+**7 관련 연구**  
+많은 시스템들은 **제약된 프로그래밍 모델을 제공**하고, 이러한 제약을 기반으로 **자동 병렬 처리를 수행**해왔습니다.  
+예를 들어, **병렬 프리픽스 계산(parallel prefix computations)**을 사용하면,  
+**결합 법칙(associative)을 만족하는 함수는 N개의 요소 배열 전체에 대해 log N 시간에 N개의 프로세서를 통해 계산할 수** 있습니다 [6, 11, 14].  
+MapReduce는 이러한 모델들을 **간소화(simplification)하고 정제(distillation)**한 것으로 볼 수 있으며,  
+이는 **대규모 실제 계산 작업을 수행한 경험에 기반**한 것입니다.  
+더 중요한 차별점은, **MapReduce는 수천 개의 프로세서로 확장 가능한 장애 복원(fault-tolerant) 구현을 제공**한다는 점입니다.  
+반면, 대부분의 병렬 처리 시스템은 **작은 규모에서만 구현**되었고,  
+**장애 처리(failure handling)의 세부 구현을 프로그래머에게 맡기는 경우가 많았습니다**.
+
+---
+
+**원문:**  
+Our locality optimization draws its inspiration from techniques such as active disks [13, 17],  
+where computation is pushed into processing elements that are close to local disks,  
+to reduce the amount of data sent across I/O subsystems or the network.
+
+**번역:**  
+**MapReduce의 지역성 최적화(locality optimization)는 '액티브 디스크(active disks)' 기법에서 영감을 받았습니다** [13, 17].  
+이 기술은 **입출력 서브시스템(I/O)이나 네트워크를 통해 전송되는 데이터를 줄이기 위해**,  
+**계산을 디스크 가까이에 있는 처리 장치로 이동**시키는 방식입니다.
+
+---
+
+**원문:**  
+The sorting facility that is a part of the MapReduce library is similar in operation to NOW-Sort [3].  
+Source machines (map workers) partition the data to be sorted and send it to one of R reduce workers.  
+Each reduce worker sorts its data locally (in memory if possible).  
+Of course NOW-Sort does not have the user-definable map and reduce functions that make our library widely applicable.
+
+**번역:**  
+**MapReduce 라이브러리에 포함된 정렬 기능은 NOW-Sort [3]의 동작 방식과 유사합니다.**  
+소스 머신(즉, map 작업자들)은 **정렬할 데이터를 나누어 R개의 reduce 작업자들 중 하나로 전송**합니다.  
+각 reduce 작업자는 **자신에게 할당된 데이터를 로컬에서 정렬**하며 (가능하다면 메모리 내에서 수행됩니다).  
+물론, **NOW-Sort는 사용자 정의 map/reduce 함수 기능이 없기 때문에, MapReduce처럼 폭넓게 적용되지는 않습니다.**
+
+---
+
+**원문:**  
+BAD-FS [5] and TACC [9] are two other systems that rely on re-execution as a mechanism for implementing fault tolerance.  
+The original article has a more complete treatment of related work [8].
+
+**번역:**  
+**BAD-FS [5]와 TACC [9]는 모두 재실행(re-execution)을 장애 복원 수단으로 사용하는 시스템들입니다.**  
+관련 연구에 대한 보다 자세한 논의는 **원문 논문 [8]에 포함되어 있습니다.**
+
+---
+**원문:**  
+**Conclusions**  
+The MapReduce programming model has been successfully used at Google for many different purposes.  
+We attribute this success to several reasons.  
+First, the model is easy to use, even for programmers without experience with parallel and distributed systems,  
+since it hides the details of parallelization, fault tolerance, locality optimization, and load balancing.  
+Second, a large variety of problems are easily expressible as MapReduce computations.  
+For example, MapReduce is used for the generation of data for Google’s production Web search service,  
+for sorting, data mining, machine learning, and many other systems.  
+Third, we have developed an implementation of MapReduce that scales to large clusters of machines comprising thousands of machines.  
+The implementation makes efficient use of these machine resources and therefore is suitable for use on many of the large computational problems encountered at Google.
+
+**번역:**  
+**결론**  
+MapReduce 프로그래밍 모델은 **Google에서 매우 다양한 용도로 성공적으로 활용**되어 왔습니다.  
+이러한 성공의 원인은 여러 가지가 있습니다.  
+첫째, **이 모델은 병렬 및 분산 시스템에 대한 경험이 없는 개발자에게도 사용이 쉽습니다.**  
+이는 **병렬화, 장애 복구, 지역성 최적화, 로드 밸런싱 등의 복잡한 세부 사항을 프레임워크가 숨겨주기 때문**입니다.  
+둘째, **다양한 문제들을 MapReduce 연산으로 쉽게 표현할 수 있습니다.**  
+예를 들어, **Google의 웹 검색 서비스를 위한 데이터 생성**, **정렬**, **데이터 마이닝**, **기계 학습**,  
+그리고 **그 외 다양한 시스템에서 MapReduce가 사용**되고 있습니다.  
+셋째, 우리는 **수천 대의 머신으로 구성된 대규모 클러스터에서도 확장 가능한 MapReduce 구현체를 개발**했습니다.  
+이 구현은 **머신 자원을 효율적으로 활용**하기 때문에,  
+**Google에서 마주하는 대규모 계산 문제들에 적합**합니다.
+
+---
+
+**원문:**  
+By restricting the programming model, we have made it easy to parallelize and distribute computations and to make such computations fault tolerant.  
+Second, network bandwidth is a scarce resource.  
+A number of optimizations in our system are therefore targeted at reducing the amount of data sent across the network:  
+the locality optimization allows us to read data from local disks,  
+and writing a single copy of the intermediate data to local disk saves network bandwidth.  
+Third, redundant execution can be used to reduce the impact of slow machines, and to handle machine failures and data loss.
+
+**번역:**  
+**프로그래밍 모델에 제약을 두었기 때문에**,  
+**계산을 병렬화하고 분산시키는 것이 쉬워졌고**,  
+이러한 계산을 **장애에 강한(fault-tolerant) 방식으로 수행**할 수 있게 되었습니다.  
+둘째, **네트워크 대역폭은 제한된 자원**입니다.  
+따라서, 우리 시스템에는 **네트워크를 통해 전송되는 데이터 양을 줄이기 위한 여러 최적화 기법**이 적용되어 있습니다:  
+**지역성 최적화(locality optimization)**를 통해 데이터를 로컬 디스크에서 읽을 수 있게 하고,  
+**중간 데이터를 로컬 디스크에 한 번만 기록하는 방식**으로 네트워크 대역폭 사용을 줄입니다.  
+셋째, **중복 실행(redundant execution)을 통해 느린 머신의 영향을 줄이고**,  
+**머신 장애나 데이터 손실에 대응**할 수 있습니다.
+
+---
