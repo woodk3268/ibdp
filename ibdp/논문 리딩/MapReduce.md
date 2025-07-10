@@ -1,4 +1,11 @@
 2025.06.30 ~ 2025.07.01
+
+---
+![[Pasted image 20250708152826.png]]
+빅데이터시대의 하둡 완벽 입문. p.11 
+
+---
+
 # MapReduce: Simplified Data Processing on Large Clusters
 
 ### [1-1]  
