@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "일지/Untitled.md",
+                "file": "1. daily-logs/2025.07/week 4/2025.07.21.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Untitled"
+              "title": "Backlinks for 2025.07.21"
             }
           },
           {
@@ -155,8 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,8 +169,9 @@
   },
   "active": "c3cb14411de3c8d3",
   "lastOpenFiles": [
-    "1. daily-logs/2025.07/2025.07.md",
+    "1. daily-logs/2025.07/week 3/2025.07.20.md",
     "1. daily-logs/2025.07/week 4/2025.07.21.md",
+    "1. daily-logs/2025.07/2025.07.md",
     "1. daily-logs/2025.07/week 3/2025.07.14.md",
     "1. daily-logs/2025.07/week 4",
     "1. daily-logs/2025.07/week 2/2025.07.13.md",
@@ -181,7 +181,6 @@
     "1. daily-logs/2025.07/Untitled.md",
     "1. daily-logs/2025.07/week 3",
     "1. daily-logs/2025.07/week 1",
-    "1. daily-logs/2025.07/week 3/2025.07.20.md",
     "1. daily-logs/2025.07/week 3/2025.07.19.md",
     "1. daily-logs/2025.07/week 3/2025.07.18.md",
     "99. resources/KakaoTalk_20250709_095015638_01.jpg",
