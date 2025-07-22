@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1. daily-logs/2025.07/week 4/2025.07.21.md",
+                "file": "1. daily-logs/2025.07/week 4/2025.07.22.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025.07.21"
+              "title": "2025.07.22"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1. daily-logs/2025.07/week 4/2025.07.21.md",
+                "file": "1. daily-logs/2025.07/week 4/2025.07.22.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 2025.07.21"
+              "title": "Backlinks for 2025.07.22"
             }
           },
           {
@@ -169,7 +169,11 @@
   },
   "active": "c3cb14411de3c8d3",
   "lastOpenFiles": [
+    "3. deep-learning-seminar/2025.07.23.md",
+    "1. daily-logs/2025.07/week 4/2025.07.22.md",
     "1. daily-logs/2025.07/week 3/2025.07.20.md",
+    "1. daily-logs/2025.07/week 3/2025.07.19.md",
+    "1. daily-logs/2025.07/week 3/2025.07.18.md",
     "1. daily-logs/2025.07/week 4/2025.07.21.md",
     "1. daily-logs/2025.07/2025.07.md",
     "1. daily-logs/2025.07/week 3/2025.07.14.md",
@@ -181,8 +185,6 @@
     "1. daily-logs/2025.07/Untitled.md",
     "1. daily-logs/2025.07/week 3",
     "1. daily-logs/2025.07/week 1",
-    "1. daily-logs/2025.07/week 3/2025.07.19.md",
-    "1. daily-logs/2025.07/week 3/2025.07.18.md",
     "99. resources/KakaoTalk_20250709_095015638_01.jpg",
     "1. daily-logs/2025.07/week 3/2025.07.17.md",
     "1. daily-logs/2025.07/week 3/2025.07.16.md",
@@ -206,7 +208,6 @@
     "99. resources/KakaoTalk_20250709_095015638.jpg",
     "99. resources/Pasted image 20250708152826.png",
     "1. daily-logs/2025.07/week 2/2025.07.07.md",
-    "1. daily-logs/2025.07/week 1/2025.07.05.md",
     "Pasted image 20250630145122.png",
     "Pasted image 20250701131059.png"
   ]
